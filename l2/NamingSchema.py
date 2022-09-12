@@ -22,3 +22,6 @@ class NamingSchema(BaseResourceCheck):
                 found in the organization README file.
             """)
         return CheckResult.FAILED
+
+
+scanner = NamingSchema()

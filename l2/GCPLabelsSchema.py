@@ -15,11 +15,11 @@ class GCPLabelsSchema(BaseResourceCheck):
         if 'labels' in conf.keys():
             return CheckResult.PASSED
         else:
-            self.details = """No 'labels' block was defined for the Google resource!
+            self.details = set("""No 'labels' block was defined for the Google resource!
             Labels are utilized for dynamic tagging and are required
             for auditing purposes. The schema for resource labels can be
             found in the organization README file.
-            """
+            """)
             return CheckResult.FAILED
 
 

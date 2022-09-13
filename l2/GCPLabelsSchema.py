@@ -1,6 +1,7 @@
 from checkov.common.models.enums import CheckResult, CheckCategories
 from checkov.terraform.checks.resource.base_resource_check import BaseResourceCheck
 
+
 class GCPLabelsSchema(BaseResourceCheck):
     def __init__(self):
         name = "Validate all Google resources have labels according to schema."
@@ -14,8 +15,7 @@ class GCPLabelsSchema(BaseResourceCheck):
         if 'labels' in conf.keys():
             return CheckResult.PASSED
         else:
-            self.details.append(
-                """No 'labels' block was defined for the Google resource!
+            self.details = """No 'labels' block was defined for the Google resource!
               Labels are utilized for dynamic tagging and are required
               for auditing purposes. The schema for resource labels can be
               found in the organization README file.
@@ -23,4 +23,4 @@ class GCPLabelsSchema(BaseResourceCheck):
             return CheckResult.FAILED
 
 
-scanner = GCPLabelsSchema()
+scanner=GCPLabelsSchema()

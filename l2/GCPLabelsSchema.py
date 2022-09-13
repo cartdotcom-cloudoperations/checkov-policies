@@ -16,11 +16,11 @@ class GCPLabelsSchema(BaseResourceCheck):
             return CheckResult.PASSED
         else:
             self.details = """No 'labels' block was defined for the Google resource!
-              Labels are utilized for dynamic tagging and are required
-              for auditing purposes. The schema for resource labels can be
-              found in the organization README file.
-              """)
+            Labels are utilized for dynamic tagging and are required
+            for auditing purposes. The schema for resource labels can be
+            found in the organization README file.
+            """
             return CheckResult.FAILED
 
 
-scanner=GCPLabelsSchema()
+scanner = GCPLabelsSchema()

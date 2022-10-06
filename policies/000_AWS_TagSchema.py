@@ -5,7 +5,7 @@ from checkov.terraform.checks.resource.base_resource_check import BaseResourceCh
 class AWSTagSchema(BaseResourceCheck):
     def __init__(self):
         name = "Validate all AWS resources have tags that follow the proper schema."
-        id = "CKV_CART_0000"
+        id = "CKV_CART_000"
         supported_resources = ["aws_*"]
         categories = [CheckCategories.CONVENTION]
         super().__init__(name=name, id=id, categories=categories,

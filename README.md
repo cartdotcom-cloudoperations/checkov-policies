@@ -14,9 +14,7 @@ pip3 install checkov
 ```
 
 ## Run
-This custom policy repository acts as a test suite for our IaC modules. The following commands can be used to run your policies against psuedo architecture located in the `test_infrastructure` directory.
+This custom policy repository acts as a test suite for our IaC modules. The following commands can be used to run your policies against psuedo architecture located in the `test-infrastructure` directory.
 ```
-checkov -d test_infrastructure/l2 --external-checks-dir l2/
-checkov -d test_infrastructure/l3 --external-checks-dir l3/
-checkov -d test_infrastructure/l4 --external-checks-dir l4/
+checkov -d test-infrastructure/l2 --external-checks-dir policies/
 ```

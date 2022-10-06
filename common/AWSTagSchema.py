@@ -13,6 +13,7 @@ class AWSTagSchema(BaseResourceCheck):
 
     def scan_resource_conf(self, conf):
         if 'tags' in conf.keys():
+            self.details.clear()
             return CheckResult.PASSED
         else:
             self.details.clear()

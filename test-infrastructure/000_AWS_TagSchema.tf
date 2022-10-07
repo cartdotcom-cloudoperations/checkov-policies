@@ -11,8 +11,8 @@ resource "aws_s3_bucket" "fail_wrong_tag_values" {
   bucket = "fail_wrong_tag_values"
 
   tags = {
-    "resource" = "aws_s3_bucket"
-    "service"  = "s3"
+    "resource" = "wrongValue"
+    "service"  = "wrongValue2"
   }
 }
 

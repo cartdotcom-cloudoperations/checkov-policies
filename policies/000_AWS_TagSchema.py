@@ -13,8 +13,20 @@ class CartCheck(BaseResourceCheck):
 
     def scan_resource_conf(self, conf):
         if 'tags' in conf.keys():
-            self.details = [conf['tags']]
-            return CheckResult.PASSED
+            tags_object = conf['tags'][0]
+            resource_correct = False
+            service_correct = False
+
+            # self.details = ['resource' in tags_object]
+
+            if 'resource' in tags_object:
+                resource_correct = True
+
+            if 'service' in tags_object:
+                service_correct = True
+
+            if service_correct and resource_correct:
+                return CheckResult.PASSED
 
         self.details = ["""
           This resource is insufficiently configured.

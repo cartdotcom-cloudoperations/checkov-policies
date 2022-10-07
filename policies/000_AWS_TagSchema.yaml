@@ -1,9 +1,0 @@
-metadata:
-  id: "CKV2_CART_000"
-  name: "AWS tag schema validation."
-  category: "CONVENTION"
-definition:
-  cond_type: "attribute"
-  resource_type: "aws_*"
-  attribute: "tags"
-  operator: "exists"

@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "pass" {
-  bucket = "pass-bucket"
+  bucket = "pass"
 
   tags = {
     "resource" = "aws_s3_bucket"
@@ -7,15 +7,24 @@ resource "aws_s3_bucket" "pass" {
   }
 }
 
-resource "aws_s3_bucket" "soft_fail" {
-  bucket = "pass-bucket"
+resource "aws_s3_bucket" "fail_wrong_tag_values" {
+  bucket = "fail_wrong_tag_values"
 
   tags = {
-    "key" = "value"
+    "resource" = "aws_s3_bucket"
+    "service"  = "s3"
   }
 }
 
-resource "aws_s3_bucket" "fail" {
-  bucket = "fail-bucket"
+resource "aws_s3_bucket" "fail_wrong_tag_keys" {
+  bucket = "fail_wrong_tag_keys"
+
+  tags = {
+    "wrongKey"  = "aws_s3_bucket"
+    "wrongKey2" = "s3"
+  }
 }
 
+resource "aws_s3_bucket" "fail_no_tags" {
+  bucket = "fail_no_tags"
+}

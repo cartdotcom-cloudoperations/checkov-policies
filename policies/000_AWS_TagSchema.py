@@ -1,8 +1,8 @@
-from checkov.common.models.enums import CheckResult, CheckCategories
 from checkov.terraform.checks.resource.base_resource_check import BaseResourceCheck
+from checkov.common.models.enums import CheckResult, CheckCategories
 
 
-class AWSTagSchema(BaseResourceCheck):
+class CartCheck(BaseResourceCheck):
     def __init__(self):
         name = "Validate all AWS resources have tags that follow the proper schema."
         id = "CKV_CART_000"
@@ -13,17 +13,22 @@ class AWSTagSchema(BaseResourceCheck):
 
     def scan_resource_conf(self, conf):
         if 'tags' in conf.keys():
-            self.details.clear()
+            self.details = [conf['tags']]
             return CheckResult.PASSED
-        else:
-            self.details.clear()
-            self.details.append("""
-            No 'tags' block was defined for the AWS resource!
-            Tags are required for auditing purposes.
-            The schema for resource labels can be found in the 
-            `cartdotcom-cloudoperations` organization README file.
-            """)
-            return CheckResult.FAILED
+
+        self.details = ["""
+          This resource is insufficiently configured.
+
+          Each AWS resource must have a 'tags' block configured as follows:
+
+          tags = {
+            "resource" = <resource_name>      (i.e. "aws_s3_bucket")
+            "service"  = <resource_service>   (i.e. "s3")
+          }
+
+          Please make the required fixes in order to pass this check.
+        """]
+        return CheckResult.FAILED
 
 
-scanner = AWSTagSchema()
+check = CartCheck()

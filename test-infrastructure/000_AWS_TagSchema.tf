@@ -1,3 +1,23 @@
+# Database
+resource "aws_db_instance" "pass" {
+  db_name = "pass"
+
+  tags = {
+    "resource" = "aws_db_instance"
+    "service"  = "db"
+  }
+}
+
+resource "aws_db_instance" "fail_wrong_tag_values" {
+  db_name = "fail"
+
+  tags = {
+    "resource" = "aws_db_instance"
+    "service"  = "rds"
+  }
+}
+
+# Bucket
 resource "aws_s3_bucket" "pass" {
   bucket = "pass"
 

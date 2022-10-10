@@ -17,13 +17,15 @@ class CartCheck(BaseResourceCheck):
             resource_correct = False
             service_correct = False
 
-            # self.details = ['resource' in tags_object]
+            # self.details = [self.entity_type]
 
             if 'resource' in tags_object:
-                resource_correct = True
+                if (tags_object['resource'] == self.entity_type):
+                    resource_correct = True
 
             if 'service' in tags_object:
-                service_correct = True
+                if (tags_object['service'] == self.entity_type.split("_")[1]):
+                    service_correct = True
 
             if service_correct and resource_correct:
                 return CheckResult.PASSED
@@ -34,9 +36,20 @@ class CartCheck(BaseResourceCheck):
           Each AWS resource must have a 'tags' block configured as follows:
 
           tags = {
-            "resource" = <resource_name>      (i.e. "aws_s3_bucket")
-            "service"  = <resource_service>   (i.e. "s3")
+            "resource" = <resource_name>
+            "service"  = <resource_service>
           }
+
+          <resource_name> should be identical to the terraform resource name.
+          - "aws_s3_bucket"
+          - "aws_ec2_transit_gateway"
+          - etc. . .
+
+          <resource_service> should be the service to which a resource belongs.
+          It's typically the first token past the 'aws_' substring.
+          - "aws_s3_bucket" -> "s3"
+          - "aws_ec2_transit_gateway" -> "ec2"
+          - etc. . .
 
           Please make the required fixes in order to pass this check.
         """]

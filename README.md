@@ -27,4 +27,4 @@ You can create a test infrastructure file in the `test-infrastructure` directory
 
 ## Config File
 
-A configuration file outlining the specifics of the Checkov configuration used in our module pipelines can be found at `./config.yaml`.
+A configuration file outlining the specifics of the Checkov configuration used in our module pipelines can be found at `./config.yaml`. Currently, it just contains the policies we wish to skip for our resources. Note that each policy skip has a comment after it that indicates why the policy was skipped.

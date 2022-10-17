@@ -1,0 +1,7 @@
+skip-check:
+  - CKV2_AWS_6  # "Ensure that S3 bucket has a Public Access block" - JI - Handled in seperate resource
+  - CKV_AWS_19  # "Ensure all data stored in the S3 bucket is securely encrypted at rest" - JI - Handled in seperate resource
+  - CKV_AWS_18  # "Ensure the S3 bucket has access logging enabled" - JI - Handled in seperate resource
+  - CKV_AWS_144 # "Ensure that S3 bucket has cross-region replication enabled" - JI - Handled in seperate resource
+  - CKV_AWS_145 # "Ensure that S3 buckets are encrypted with KMS by default" - JI - Handled in seperate resource
+  - CKV_AWS_21  # "Ensure all data stored in the S3 bucket have versioning enabled" - JI - Handled in seperate resource

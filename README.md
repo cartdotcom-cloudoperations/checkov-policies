@@ -1,6 +1,6 @@
 # Checkov Policies
 
-A repository to house custom Checkov policies for our Terraform code.
+A repository to house custom Checkov policies and the Checkov configuration for the CloudOps team's IaC modules.
 
 ## Install
 
@@ -24,3 +24,7 @@ Policies are located in the `policies` directory and adhere to the following nam
 `<Sequential 3 Digit Number>_<Provider Targeted>_<Simple Policy Name>.yaml`
 
 You can create a test infrastructure file in the `test-infrastructure` directory that matches the name of your custom policy.
+
+## Config File
+
+A configuration file outlining the specifics of the Checkov configuration used in our module pipelines can be found at `./config.yaml`.
